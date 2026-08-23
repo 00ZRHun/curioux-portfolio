@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Your Name] — Landing Pages That Convert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#11161D;
+    --paper:#EEF0EA;
+    --panel:#F7F8F4;
+    --slate:#5C6570;
+    --line:#CBCFC4;
+    --signal:#2FAE9B;
+    --signal-dim:#DCEEEA;
+    --amber:#E2993C;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+
+  :focus-visible{
+    outline:2px solid var(--signal);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1140px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--signal);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:7px; height:7px;
+    background:var(--signal);
+    border-radius:50%;
+    display:inline-block;
+    box-shadow:0 0 0 3px var(--signal-dim);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(238,240,234,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    max-width:1140px;
+    margin:0 auto;
+  }
+  .brand{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:-0.01em;
+  }
+  .brand span{ color:var(--signal); }
+  .nav-links{
+    display:flex;
+    gap:32px;
+    list-style:none;
+    font-size:14px;
+    font-weight:500;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--slate);
+    transition:color 0.15s ease;
+  }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-cta{
+    font-family:var(--font-mono);
+    font-size:13px;
+    background:var(--ink);
+    color:var(--paper);
+    padding:10px 18px;
+    border-radius:3px;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .nav-mobile-hide{ display:flex; }
+  @media (max-width:720px){
+    .nav-mobile-hide{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 72px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .hero-grid{ grid-template-columns:1fr; }
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(34px,4.6vw,54px);
+    line-height:1.06;
+    letter-spacing:-0.02em;
+    margin:18px 0 20px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--signal);
+  }
+  .hero p.sub{
+    font-size:17px;
+    color:var(--slate);
+    max-width:46ch;
+    margin-bottom:32px;
+  }
+  .cta-row{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:var(--font-mono);
+    font-size:14px;
+    padding:14px 24px;
+    border-radius:3px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .btn-primary:hover{ background:var(--signal); transform:translateY(-1px); }
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{ border-color:var(--ink); }
+
+  /* Signature: browser mockup with live ticker */
+  .mock{
+    background:var(--ink);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(17,22,29,0.35);
+  }
+  .mock-chrome{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:12px 14px;
+    background:#1B222B;
+  }
+  .mock-dot{ width:9px; height:9px; border-radius:50%; background:#3A4149; }
+  .mock-url{
+    margin-left:10px;
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:#7A8390;
+    background:#12181F;
+    padding:5px 12px;
+    border-radius:3px;
+    flex:1;
+  }
+  .mock-body{
+    background:var(--panel);
+    padding:26px 22px 22px;
+  }
+  .mock-headline{
+    height:14px;
+    width:70%;
+    background:var(--ink);
+    border-radius:2px;
+    margin-bottom:10px;
+  }
+  .mock-line{
+    height:8px;
+    background:var(--line);
+    border-radius:2px;
+    margin-bottom:8px;
+  }
+  .mock-line.w60{ width:60%; }
+  .mock-line.w80{ width:80%; }
+  .mock-cta{
+    margin-top:16px;
+    width:120px;
+    height:30px;
+    background:var(--signal);
+    border-radius:3px;
+  }
+  .mock-readout{
+    margin-top:22px;
+    border-top:1px solid var(--line);
+    padding-top:16px;
+    display:flex;
+    justify-content:space-between;
+    font-family:var(--font-mono);
+  }
+  .readout-item{ text-align:left; }
+  .readout-label{
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:4px;
+  }
+  .readout-value{
+    font-size:18px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .readout-value.signal{ color:var(--signal); }
+  #ticker{ font-variant-numeric:tabular-nums; }
+
+  /* ---------- STRIP ---------- */
+  .strip{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:28px 0;
+  }
+  .strip-inner{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    text-align:center;
+  }
+  @media (max-width:700px){
+    .strip-inner{ grid-template-columns:repeat(2,1fr); }
+  }
+  .strip-item .num{
+    font-family:var(--font-display);
+    font-size:26px;
+    font-weight:600;
+  }
+  .strip-item .label{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-top:4px;
+  }
+
+  /* ---------- SECTION HEAD ---------- */
+  section{ padding:88px 0; }
+  .sec-head{
+    max-width:56ch;
+    margin-bottom:48px;
+  }
+  .sec-head h2{
+    font-family:var(--font-display);
+    font-size:clamp(26px,3.2vw,36px);
+    letter-spacing:-0.01em;
+    margin-top:12px;
+  }
+  .sec-head p{
+    color:var(--slate);
+    margin-top:12px;
+    font-size:15.5px;
+  }
+
+  /* ---------- PORTFOLIO ---------- */
+  .case-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  @media (max-width:900px){
+    .case-grid{ grid-template-columns:1fr; }
+  }
+  .case{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    transition:transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .case:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 30px -18px rgba(17,22,29,0.25);
+  }
+  .case-shot{
+    height:150px;
+    background:
+      linear-gradient(180deg, var(--ink) 0 34px, transparent 34px),
+      repeating-linear-gradient(var(--line) 0 1px, transparent 1px 26px);
+    background-color:var(--paper);
+    position:relative;
+  }
+  .case-shot::after{
+    content:attr(data-tag);
+    position:absolute;
+    top:9px; left:14px;
+    font-family:var(--font-mono);
+    font-size:10px;
+    color:var(--paper);
+    letter-spacing:0.05em;
+  }
+  .case-body{ padding:20px; }
+  .case-body .client{
+    font-family:var(--font-mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--signal);
+  }
+  .case-body h3{
+    font-family:var(--font-display);
+    font-size:19px;
+    margin:8px 0 10px;
+  }
+  .case-body p{
+    font-size:14px;
+    color:var(--slate);
+    margin-bottom:12px;
+  }
+  .case-result{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:var(--ink);
+    border-top:1px dashed var(--line);
+    padding-top:12px;
+  }
+  .case-result::before{ content:'↑'; color:var(--signal); font-weight:700; }
+
+  /* ---------- SERVICES ---------- */
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  @media (max-width:900px){
+    .service-grid{ grid-template-columns:1fr; }
+  }
+  .service{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:28px 24px;
+    background:var(--panel);
+    position:relative;
+  }
+  .service.featured{
+    border-color:var(--ink);
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .service.featured .slate{ color:#9BA3AD; }
+  .service.featured .price{ color:var(--paper); }
+  .service .badge{
+    position:absolute;
+    top:-11px; right:20px;
+    background:var(--signal);
+    color:var(--ink);
+    font-family:var(--font-mono);
+    font-size:10px;
+    padding:4px 10px;
+    border-radius:20px;
+    font-weight:500;
+  }
+  .service h3{
+    font-family:var(--font-display);
+    font-size:19px;
+    margin-bottom:6px;
+  }
+  .service .price{
+    font-family:var(--font-mono);
+    font-size:26px;
+    margin:10px 0 18px;
+  }
+  .service .price small{
+    font-size:13px;
+    color:var(--slate);
+    font-weight:400;
+  }
+  .service ul{
+    list-style:none;
+    font-size:14px;
+  }
+  .service li{
+    padding:7px 0;
+    border-top:1px solid var(--line);
+    display:flex;
+    gap:10px;
+  }
+  .service.featured li{ border-top-color:#2A323C; }
+  .service li::before{ content:'—'; color:var(--signal); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  @media (max-width:700px){
+    .about-grid{ grid-template-columns:1fr; }
+  }
+  .avatar{
+    width:100%;
+    aspect-ratio:1;
+    border-radius:8px;
+    background:
+      linear-gradient(135deg, var(--signal-dim), var(--panel));
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--slate);
+    text-align:center;
+    padding:10px;
+  }
+  .about-text p{
+    font-size:15.5px;
+    color:var(--slate);
+    margin-bottom:14px;
+    max-width:60ch;
+  }
+  .about-text strong{ color:var(--ink); }
+
+  /* ---------- CONTACT ---------- */
+  .contact-panel{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:12px;
+    padding:56px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+  }
+  @media (max-width:800px){
+    .contact-panel{ grid-template-columns:1fr; padding:36px 26px; }
+  }
+  .contact-panel h2{
+    font-family:var(--font-display);
+    font-size:clamp(24px,3vw,32px);
+    margin-bottom:14px;
+  }
+  .contact-panel p{
+    color:#9BA3AD;
+    font-size:15px;
+    max-width:42ch;
+  }
+  .contact-panel .btn-primary{
+    background:var(--signal);
+    color:var(--ink);
+    margin-top:24px;
+  }
+  .contact-panel .btn-primary:hover{ background:var(--paper); }
+
+  form{ display:flex; flex-direction:column; gap:12px; }
+  .field label{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:#8890999;
+    margin-bottom:6px;
+    color:#8B93A0;
+  }
+  .field input, .field textarea{
+    width:100%;
+    background:#1B222B;
+    border:1px solid #2A323C;
+    border-radius:4px;
+    padding:11px 13px;
+    color:var(--paper);
+    font-family:var(--font-body);
+    font-size:14px;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:2px solid var(--signal);
+    outline-offset:1px;
+    border-color:var(--signal);
+  }
+  .field textarea{ resize:vertical; min-height:80px; }
+  form button{
+    margin-top:6px;
+    font-family:var(--font-mono);
+    font-size:14px;
+    background:var(--signal);
+    color:var(--ink);
+    border:none;
+    padding:13px 20px;
+    border-radius:4px;
+    cursor:pointer;
+    font-weight:500;
+    transition:background 0.15s ease;
+  }
+  form button:hover{ background:var(--paper); }
+  .form-note{ font-size:12px; color:#6B7480; margin-top:4px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:32px 0 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+    color:var(--slate);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  footer a{ text-decoration:none; color:var(--slate); }
+  footer a:hover{ color:var(--ink); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">[Your Name]<span>.</span></div>
+    <ul class="nav-links nav-mobile-hide">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get a free mockup</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Available for new projects</div>
+      <h1>Landing pages built to <em>get you customers</em>, not just look good.</h1>
+      <p class="sub">I design and build fast, mobile-first landing pages for established businesses that want more calls, bookings, and inquiries from their website — without a bloated agency price tag.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">Get a free mockup →</a>
+        <a href="#work" class="btn btn-ghost">See the work</a>
+      </div>
+    </div>
+    <div class="mock" role="img" aria-label="Preview of a sample landing page with a rising conversion counter">
+      <div class="mock-chrome">
+        <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+        <div class="mock-url">yourcompany.com</div>
+      </div>
+      <div class="mock-body">
+        <div class="mock-headline"></div>
+        <div class="mock-line w80"></div>
+        <div class="mock-line w60"></div>
+        <div class="mock-cta"></div>
+        <div class="mock-readout">
+          <div class="readout-item">
+            <div class="readout-label">Load time</div>
+            <div class="readout-value signal">0.8s</div>
+          </div>
+          <div class="readout-item">
+            <div class="readout-label">Mobile score</div>
+            <div class="readout-value signal">98</div>
+          </div>
+          <div class="readout-item">
+            <div class="readout-label">Inquiries this month</div>
+            <div class="readout-value signal" id="ticker">128</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap strip-inner">
+    <div class="strip-item"><div class="num">7–10</div><div class="label">Day turnaround</div></div>
+    <div class="strip-item"><div class="num">100%</div><div class="label">Mobile-first</div></div>
+    <div class="strip-item"><div class="num">[X]</div><div class="label">Pages shipped</div></div>
+    <div class="strip-item"><div class="num">Free</div><div class="label">Initial mockup</div></div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Selected work</div>
+      <h2>Real pages, built for real businesses.</h2>
+      <p>Swap these three in with your own case studies as you complete them — a screenshot, the problem, and one measurable result go a long way.</p>
+    </div>
+    <div class="case-grid">
+      <div class="case">
+        <div class="case-shot" data-tag="yourcompany.com"></div>
+        <div class="case-body">
+          <div class="client">[Client type — e.g. Dental Clinic]</div>
+          <h3>[Project name]</h3>
+          <p>[One sentence: what problem the old site had, and what you built instead.]</p>
+          <div class="case-result">[e.g. 3x more booking form submissions]</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="case-shot" data-tag="yourcompany.com"></div>
+        <div class="case-body">
+          <div class="client">[Client type — e.g. Local Gym]</div>
+          <h3>[Project name]</h3>
+          <p>[One sentence: what problem the old site had, and what you built instead.]</p>
+          <div class="case-result">[e.g. Page load cut from 6s to 1s]</div>
+        </div>
+      </div>
+      <div class="case">
+        <div class="case-shot" data-tag="yourcompany.com"></div>
+        <div class="case-body">
+          <div class="client">[Client type — e.g. Real Estate Agent]</div>
+          <h3>[Project name]</h3>
+          <p>[One sentence: what problem the old site had, and what you built instead.]</p>
+          <div class="case-result">[e.g. 40+ leads in first month]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Services</div>
+      <h2>Pick a starting point. Every project ends with a page you own.</h2>
+      <p>Adjust these packages and prices to match your market and effort — this structure just gives visitors an easy way to compare.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service">
+        <h3>Starter Page</h3>
+        <div class="price">[$XXX]<small> one-time</small></div>
+        <ul>
+          <li>Single landing page</li>
+          <li>Mobile-first build</li>
+          <li>Contact form included</li>
+          <li>7-day delivery</li>
+        </ul>
+      </div>
+      <div class="service featured">
+        <span class="badge">Most popular</span>
+        <h3>Growth Page</h3>
+        <div class="price">[$XXX]<small class="slate"> one-time</small></div>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Copywriting assistance</li>
+          <li>Basic SEO setup</li>
+          <li>1 round of revisions included</li>
+        </ul>
+      </div>
+      <div class="service">
+        <h3>Partner Plan</h3>
+        <div class="price">[$XXX]<small>/mo</small></div>
+        <ul>
+          <li>Everything in Growth</li>
+          <li>Ongoing edits & updates</li>
+          <li>Monthly performance check-in</li>
+          <li>Priority turnaround</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="avatar">[Your photo]</div>
+    <div class="about-text">
+      <div class="eyebrow">About</div>
+      <h2 style="font-family:var(--font-display); font-size:26px; margin:12px 0 16px;">[Your Name]</h2>
+      <p><strong>[One line on your background — e.g. "I'm a freelance web developer based in ___, specializing in landing pages for local businesses."]</strong></p>
+      <p>[A few sentences on why you do this work and how you approach a project — e.g. what you focus on (speed, conversions, clarity), and what a client can expect working with you.]</p>
+      <p>[Optional: a line about your process — free mockup first, fixed timeline, direct communication, no long contracts.]</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <div>
+        <div class="eyebrow">Get started</div>
+        <h2>Get a free mockup of your landing page.</h2>
+        <p>Send a few details about your business. You'll get a no-obligation mockup back — if you like it, we build it together.</p>
+      </div>
+      <form>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" type="text" placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="company">Company</label>
+          <input id="company" type="text" placeholder="Company name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="you@company.com">
+        </div>
+        <div class="field">
+          <label for="details">What do you need?</label>
+          <textarea id="details" placeholder="Tell me a bit about your business and what you're looking for"></textarea>
+        </div>
+        <button type="submit">Request free mockup</button>
+        <div class="form-note">This form is static — connect it to Formspree, Getform, or your email before publishing.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div>© [Year] [Your Name]. All rights reserved.</div>
+  <div style="display:flex; gap:20px;">
+    <a href="#">Email</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Portfolio</a>
+  </div>
+</footer>
+
+<script>
+  // Signature ticker: small ambient movement in the hero mockup readout.
+  (function(){
+    const el = document.getElementById('ticker');
+    if(!el) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) return;
+    let val = 128;
+    setInterval(() => {
+      val += 1;
+      el.textContent = val;
+    }, 4000);
+  })();
+</script>
+
+</body>
+</html>
