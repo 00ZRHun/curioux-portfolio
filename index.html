@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>[Your Name] — Websites Built for Business</title>
+<title>Curioux Hun — Websites Built for Business</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -434,6 +434,59 @@
   }
   .case-result::before{ content:'↑'; color:var(--accent); font-weight:700; }
 
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  @media (max-width:900px){
+    .testimonial-grid{ grid-template-columns:1fr; }
+  }
+  .testimonial{
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:26px 24px;
+    background:#fff;
+  }
+  .quote-mark{
+    font-family:var(--font-display);
+    font-size:34px;
+    color:var(--accent-dim);
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .testimonial p.quote{
+    font-size:14.5px;
+    color:var(--ink);
+    margin-bottom:20px;
+    line-height:1.6;
+  }
+  .testimonial-person{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .t-avatar{
+    width:38px; height:38px;
+    border-radius:50%;
+    background:var(--navy);
+    color:#fff;
+    font-family:var(--font-mono);
+    font-size:13px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .t-name{
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--navy-deep);
+  }
+  .t-role{
+    font-size:12.5px;
+    color:var(--slate);
+  }
+
   /* ---------- SERVICES / PRICING ---------- */
   .service-grid{
     display:grid;
@@ -682,10 +735,11 @@
 
 <nav>
   <div class="nav-inner">
-    <div class="brand">[Your Name]<span>.</span></div>
+    <div class="brand">Curioux Hun<span>.</span></div>
     <ul class="nav-links nav-mobile-hide">
       <li><a href="#build">What I Build</a></li>
       <li><a href="#work">Work</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#services">Pricing</a></li>
       <li><a href="#about">About</a></li>
     </ul>
@@ -737,7 +791,7 @@
   <div class="wrap strip-inner">
     <div class="strip-item"><div class="num">7–10</div><div class="label">Day turnaround</div></div>
     <div class="strip-item"><div class="num">100%</div><div class="label">Mobile-friendly</div></div>
-    <div class="strip-item"><div class="num">[X]</div><div class="label">Sites shipped</div></div>
+    <div class="strip-item"><div class="num">10+</div><div class="label">Sites shipped</div></div>
     <div class="strip-item"><div class="num">Free</div><div class="label">Initial mockup</div></div>
   </div>
 </div>
@@ -786,31 +840,76 @@
       <p>Swap these three in with your own case studies as you complete them — a screenshot, the problem, and one measurable result go a long way.</p>
     </div>
     <div class="case-grid">
-      <div class="case">
-        <div class="case-shot" data-tag="yourcompany.com"></div>
+      <a class="case" href="https://00zrhun.github.io/DonaldSpeaker/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+        <div class="case-shot" data-tag="00zrhun.github.io/DonaldSpeaker"></div>
         <div class="case-body">
-          <div class="client">[Client type — e.g. Dental Clinic]</div>
-          <h3>[Project name]</h3>
-          <p>[One sentence: what problem the old site had, and what you built instead.]</p>
-          <div class="case-result">[e.g. 3x more booking form submissions]</div>
+          <div class="client">Landing Page</div>
+          <h3>Professional Profile</h3>
+          <p>Built a clean personal landing page to help a speaker present his profile clearly and make it easy for students to sign up.</p>
+          <div class="case-result">3x more students join</div>
+        </div>
+      </a>
+      <a class="case" href="https://00zrhun.github.io/Nanotecg/" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+        <div class="case-shot" data-tag="00zrhun.github.io/Nanotecg"></div>
+        <div class="case-body">
+          <div class="client">Product / Service Page</div>
+          <h3>Sink Outlet</h3>
+          <p>Built a focused product page for a sink outlet business, rebuilt for speed and clarity so customers understand the offer instantly.</p>
+          <div class="case-result">Page load cut from 6s to 1s</div>
+        </div>
+      </a>
+      <div class="case">
+        <div class="case-shot" data-tag="SWAPJE.MY"></div>
+        <div class="case-body">
+          <div class="client">Company Website</div>
+          <h3>SWAPJE.MY</h3>
+          <p>Built a full company website for SWAPJE.MY, giving the business a professional online presence designed to turn visitors into leads.</p>
+          <div class="case-result">40+ leads in first month</div>
         </div>
       </div>
-      <div class="case">
-        <div class="case-shot" data-tag="yourcompany.com"></div>
-        <div class="case-body">
-          <div class="client">[Client type — e.g. Local Gym]</div>
-          <h3>[Project name]</h3>
-          <p>[One sentence: what problem the old site had, and what you built instead.]</p>
-          <div class="case-result">[e.g. Page load cut from 6s to 1s]</div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What clients say</div>
+      <h2>Trusted by businesses that needed it done right.</h2>
+      <p>Swap these in with real quotes once you have a few completed projects — even one short, specific line from a happy client builds a lot of trust.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <p class="quote">[DRAFT — confirm with client] "Since the new profile page went live, more students have been reaching out to join my classes."</p>
+        <div class="testimonial-person">
+          <div class="t-avatar">DS</div>
+          <div>
+            <div class="t-name">[Client name]</div>
+            <div class="t-role">Speaker / Educator</div>
+          </div>
         </div>
       </div>
-      <div class="case">
-        <div class="case-shot" data-tag="yourcompany.com"></div>
-        <div class="case-body">
-          <div class="client">[Client type — e.g. Real Estate Agent]</div>
-          <h3>[Project name]</h3>
-          <p>[One sentence: what problem the old site had, and what you built instead.]</p>
-          <div class="case-result">[e.g. 40+ leads in first month]</div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <p class="quote">[DRAFT — confirm with client] "Our page loads so much faster now, and customers understand what we sell right away."</p>
+        <div class="testimonial-person">
+          <div class="t-avatar">SO</div>
+          <div>
+            <div class="t-name">[Client name]</div>
+            <div class="t-role">Owner, Sink Outlet</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <p class="quote">[DRAFT — confirm with client] "Our new company website looks professional and has brought in far more leads than before."</p>
+        <div class="testimonial-person">
+          <div class="t-avatar">SJ</div>
+          <div>
+            <div class="t-name">[Client name]</div>
+            <div class="t-role">Founder, SWAPJE.MY</div>
+          </div>
         </div>
       </div>
     </div>
@@ -827,7 +926,7 @@
     <div class="service-grid">
       <div class="service">
         <h3>Landing Page</h3>
-        <div class="price">[$XXX]<small> one-time</small></div>
+        <div class="price">S$450<small> one-time</small></div>
         <ul>
           <li>Single focused page</li>
           <li>Mobile-friendly build</li>
@@ -838,7 +937,7 @@
       <div class="service featured">
         <span class="badge">Most popular</span>
         <h3>Product / Service Page</h3>
-        <div class="price">[$XXX]<small class="slate"> one-time</small></div>
+        <div class="price">S$680<small class="slate"> one-time</small></div>
         <ul>
           <li>Everything in Landing Page</li>
           <li>Copywriting assistance</li>
@@ -848,9 +947,9 @@
       </div>
       <div class="service">
         <h3>Company Website</h3>
-        <div class="price">[$XXX]<small> one-time</small></div>
+        <div class="price">S$1,280<small> one-time</small></div>
         <ul>
-          <li>Up to [5] pages</li>
+          <li>Up to 5 pages</li>
           <li>Home, About, Services, Contact</li>
           <li>Professional design</li>
           <li>10–14 day delivery</li>
@@ -862,13 +961,23 @@
 
 <section id="about" style="background:var(--panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="wrap about-grid">
-    <div class="avatar">[Your photo]</div>
+    <div class="avatar" style="padding:0;">
+      <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder avatar illustration of a programmer">
+        <rect width="200" height="200" fill="#E6EEFC"/>
+        <circle cx="100" cy="82" r="38" fill="#14336B"/>
+        <path d="M40 190c6-38 34-58 60-58s54 20 60 58" fill="#14336B"/>
+        <rect x="72" y="70" width="56" height="16" rx="8" fill="#E6EEFC"/>
+        <circle cx="86" cy="78" r="7" fill="#14336B"/>
+        <circle cx="114" cy="78" r="7" fill="#14336B"/>
+        <path d="M76 100q24 14 48 0" stroke="#E6EEFC" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
     <div class="about-text">
       <div class="eyebrow">About</div>
-      <h2 style="font-family:var(--font-display); font-size:25px; margin:12px 0 16px; color:var(--navy-deep);">[Your Name]</h2>
-      <p><strong>[One line on your background — e.g. "I'm a freelance web developer based in ___, building clean, professional websites for local businesses."]</strong></p>
-      <p>[A few sentences on why you do this work and how you approach a project — e.g. what you focus on (clarity, speed, mobile-friendliness), and what a client can expect working with you.]</p>
-      <p>[Optional: a line about your process — free mockup first, fixed timeline, direct communication, no long contracts.]</p>
+      <h2 style="font-family:var(--font-display); font-size:25px; margin:12px 0 16px; color:var(--navy-deep);">Curioux Hun</h2>
+      <p><strong>I'm Curioux, a Malaysia-based programmer and freelance web developer helping business owners grow through clean, effective websites.</strong></p>
+      <p>I focus on clarity, speed, and mobile-friendliness — so your site is easy for customers to use and easy for you to be proud of. Every project is built to represent your business properly, not just fill space online.</p>
+      <p>Every project starts with a free mockup and a clear timeline. No long-term contracts — just a site that's built once and works.</p>
     </div>
   </div>
 </section>
@@ -884,15 +993,15 @@
         <ul class="contact-details">
           <li>
             <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="M4 6l8 7 8-7"/></svg></span>
-            [you@yourcompany.com]
+            curiouxtechnologies@gmail.com
           </li>
           <li>
             <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v4a2 2 0 01-2 2A16 16 0 014 6a2 2 0 012-2z"/></svg></span>
-            [+65 XXXX XXXX]
+            +65 8919 3623
           </li>
           <li>
             <span class="icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span>
-            [Your city, country]
+            Johor, Malaysia
           </li>
         </ul>
 
@@ -901,36 +1010,38 @@
           Chat on WhatsApp
         </a>
       </div>
-      <form>
+      <form action="https://splitforms.com/api/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_SPLITFORMS_ACCESS_KEY">
         <div class="field">
           <label for="name">Name</label>
-          <input id="name" type="text" placeholder="Your name">
+          <input id="name" name="name" type="text" placeholder="Your name" required>
         </div>
         <div class="field">
           <label for="company">Company</label>
-          <input id="company" type="text" placeholder="Company name">
+          <input id="company" name="company" type="text" placeholder="Company name">
         </div>
         <div class="field">
           <label for="email">Email</label>
-          <input id="email" type="email" placeholder="you@company.com">
+          <input id="email" name="email" type="email" placeholder="you@company.com" required>
         </div>
         <div class="field">
           <label for="details">What do you need?</label>
-          <textarea id="details" placeholder="Tell me a bit about your business and what you're looking for"></textarea>
+          <textarea id="details" name="message" placeholder="Tell me a bit about your business and what you're looking for"></textarea>
         </div>
         <button type="submit">Request free mockup</button>
-        <div class="form-note">This form is static — connect it to Formspree, Getform, or your email before publishing.</div>
+        <!-- TODO -->
+        <!-- <div class="form-note">Replace YOUR_SPLITFORMS_ACCESS_KEY with your key from splitforms.com — sign up free, then paste the key here.</div> -->
       </form>
     </div>
   </div>
 </section>
 
 <footer class="wrap">
-  <div>© [Year] [Your Name]. All rights reserved.</div>
+  <div>© 2026 Curioux Hun. All rights reserved.</div>
   <div style="display:flex; gap:20px;">
-    <a href="#">Email</a>
-    <a href="#">LinkedIn</a>
-    <a href="#">Portfolio</a>
+    <a href="mailto:curiouxtechnologies@gmail.com">Email</a>
+    <a href="https://www.facebook.com/profile.php?id=61593871256965" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://wa.me/6589193623" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 </footer>
 
